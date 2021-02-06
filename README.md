@@ -7,6 +7,17 @@
 TBA
 ### How to use
 it provides web view and api.
+you can create test account.
+
+```sh
+$ rails db:seed
+```
+
+And this is test account info.
+- nickname: 'test',
+- email: 'test@gmail.com',
+- password: 'testtest'
+
 #### started local server
 ```sh
 $ bin/rails s
