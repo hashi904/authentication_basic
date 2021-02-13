@@ -1,4 +1,4 @@
-class FormUserNew
+class NewUserForm
   include ActiveModel::Model
 
   attr_accessor :nickname, :email, :password
