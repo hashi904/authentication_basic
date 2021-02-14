@@ -1,6 +1,6 @@
 <h1>Sigin In</h1>
 <% if flash[:notice] %>
-   <%= flash[:notice] %>
+  <%= flash[:notice] %>
 <% end %>
 <%= form_for(@new_session, url: sign_in_path, method: :post) do |f| %>
   <%= f.label :email %>
