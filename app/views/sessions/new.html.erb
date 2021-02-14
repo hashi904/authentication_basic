@@ -1,8 +1,8 @@
 <h1>Sigin In</h1>
-<% flash.each do |key, value| %>
-  <%= content_tag(:div, value, class: key) %>
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
 <% end %>
-<%= form_for(@user, url: sign_in_path, method: :post) do |f| %>
+<%= form_for(@new_session, url: sign_in_path, method: :post) do |f| %>
   <%= f.label :email %>
   <%= f.email_field :email %>
   <%= f.label :password %>
