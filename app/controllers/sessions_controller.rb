@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :valid_params?, only: [:create]
+
   def index; end
 
   def new
@@ -7,12 +9,12 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: login_params[:email])
-    if @user.present? && @user.authenticate(login_params[:password])
+    if @user && @user.authenticate(login_params[:password])
       log_in(@user)
       redirect_to action: :index
     else
-      flash.now[:alert] = 'emailまたはpasswordが間違っています'
-      render 'new'
+      flash.now[:danger] = 'Invalid email/password combination'
+      render action: :new
     end
   end
 
@@ -25,5 +27,12 @@ class SessionsController < ApplicationController
 
   def login_params
     params.require(:user).permit(:email, :password)
+  end
+
+  def valid_params?
+    if login_params[:email].blank? || login_params[:password].blank?
+      binding.pry
+      redirect_to root_url
+    end
   end
 end
