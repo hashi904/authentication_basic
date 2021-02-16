@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def new
-    @user = NewUserForm.new
+    @form = NewUserForm.new
   end
 
   def create
-    @user = NewUserForm.new(user_params)
-    if @user.save
-      log_in(@user)
+    @form = NewUserForm.new(user_params)
+    if @form.save?
+      log_in(@form.user)
       redirect_to sessions_path
     else
       render 'new'
