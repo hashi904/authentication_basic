@@ -14,5 +14,5 @@ $
 # create rspec file
 $ rails g rspec:controller user       
 # execute rspec file
-$ bundle exec rspec FILE_PATH
+$ bundle exec rspec --format documentation FILE_PATH
 ```
