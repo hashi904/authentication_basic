@@ -1,13 +1,13 @@
 <h1>sigin up</h1>
-<% if @user.errors.any? %>
+<% if @form.errors.any? %>
   <ul>
-    <% @user.errors.full_messages.each do |message| %>
+    <% @form.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
 <% end %>
 <div>
-  <%= form_for(@user, url: sign_up_path, method: :post) do |f| %>
+  <%= form_for(@form, url: sign_up_path, method: :post) do |f| %>
     <%= f.label :nickname %>
     <%= f.text_field :nickname %>
     <%= f.label :email %>

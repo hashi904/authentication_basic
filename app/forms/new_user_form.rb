@@ -1,7 +1,9 @@
 class NewUserForm
   include ActiveModel::Model
+  include ActiveModel::Validations
 
   attr_accessor :nickname, :email, :password
+  attr_reader :user
 
   validates :nickname, presence: true
   validates :email, presence: true
@@ -11,8 +13,10 @@ class NewUserForm
     User.new(nickname: nickname, email: email, password: password)
   end
 
-  def save
+  def save?
     return false if invalid?
-    to_model.save
+    @user = User.new(nickname: nickname, email: email, password: password)
+    @user.save
+    true
   end
 end
