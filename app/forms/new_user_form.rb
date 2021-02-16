@@ -15,8 +15,8 @@ class NewUserForm
 
   def save?
     return false if invalid?
+
     @user = User.new(nickname: nickname, email: email, password: password)
     @user.save
-    true
   end
 end
