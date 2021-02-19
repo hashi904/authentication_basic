@@ -10,7 +10,7 @@ describe SessionsController, type: :controller do
     end
   end
 
-  describe 'GET #create' do
+  describe 'POST #create' do
     let!(:new_session_params) { { email: email, password: password } }
 
     context 'ログインに成功する時' do
@@ -43,7 +43,7 @@ describe SessionsController, type: :controller do
         let!(:email) { 'test@gmail.com' }
         let!(:password) { 'invalid_password' }
 
-        it 'render to sign in' do
+        it 'render sign in' do
           post :create, params: { new_session_form: new_session_params }
           expect(response).to render_template('sessions/new')
         end
