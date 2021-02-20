@@ -13,7 +13,8 @@ module Authentication
 
     def self.decode(token)
       decoded_token = JWT.decode(token, SECRET_KEY_BASE, true, algorithm: 'HS256')
-      decoded_token.first
+      decoded_token.first.delete('exp')
+      decoded_token
     end
   end
 end
