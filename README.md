@@ -28,3 +28,9 @@ TBS
 #### api
 end poin
 TBA
+
+テストこっち使った方がいい？
+```ruby
+# subject { get :new }
+# expect(subject)
+```
