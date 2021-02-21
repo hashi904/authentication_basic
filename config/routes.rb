@@ -8,4 +8,11 @@ Rails.application.routes.draw do
 
   get '/sign_up', to: 'users#new'
   post '/sign_up', to: 'users#create'
+
+  # api
+  namespace :api do
+    namespace :v1 do
+      post '/sign_in', to: 'users#sign_in'
+    end
+  end
 end

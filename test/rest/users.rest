@@ -1,0 +1,9 @@
+### sign in request
+POST http://localhost:3001/api/v1/sign_in
+X-Requested-With: XMLHttpRequest
+content-type: application/json
+
+{
+  "email":  "test@gmail.com",
+  "password_digest": "testtest"
+}
