@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       render json: { error: '401 error', message: error_message }, status: :unauthorized
     else
       format = params[:format] == :json ? :json : :html
-      render template: 'errors/error_401', formats: format,
+      render template: 'errors/error_404', formats: format,
              status: :unauthorized, layout: 'application', content_type: 'text/html'
     end
   end
