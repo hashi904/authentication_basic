@@ -6,7 +6,8 @@ module JwtAuthentication
   end
 
   def jwt_authenticate
-    raise_header_empty_error if request_header.blank?
+    return raise_header_empty_error if request_header.blank?
+
     user = decode_jwt
     return raise_unauthoraization_error if user.nil?
 
@@ -39,6 +40,6 @@ module JwtAuthentication
   end
 
   def raise_unauthoraization_error
-    render_401('Either you should be sign in or token is expired or wrong')
+    render_401('Either token is expired or wrong')
   end
 end
