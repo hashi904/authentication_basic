@@ -1,7 +1,8 @@
 class Api::V1::AdminsController < Api::ApiApplicationController
   before_action :jwt_authenticate
+
   def index
     @users = User.all
-    render json: { status: 'request ok' }
+    render json: { status: 'request ok', users: @users }
   end
 end
