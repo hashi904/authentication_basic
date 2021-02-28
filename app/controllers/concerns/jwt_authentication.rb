@@ -1,31 +1,26 @@
-# request を想定した実装にしないと使い物にならなくない？
-# tokenの取得方法を
 module JwtAuthentication
   extend ActiveSupport::Concern
-
-  included do
-    before_action :jwt_present?, only: [:jwt_authenticate]
-  end
 
   def create_jwt(preload_user)
     Authentication::JwtAuthenticator.encode(preload_user)
   end
 
   def jwt_authenticate
+    raise_header_empty_error if request_header.blank?
     user = decode_jwt
-    return unauthoraization_error if user.nil?
+    return raise_unauthoraization_error if user.nil?
 
     user
   end
 
   private
 
-  def jwt_present?
-    render_401('http header token empty.') if jwt.blank?
+  def request_header
+    request.headers['Authorization']
   end
 
   def jwt
-    request.headers['Authorization'].split('Bearer ').last
+    request_header.split('Bearer ').last
   end
 
   def decode_jwt
@@ -39,7 +34,11 @@ module JwtAuthentication
     nil
   end
 
-  def unauthoraization_error
+  def raise_header_empty_error
+    render_401('http header token empty.')
+  end
+
+  def raise_unauthoraization_error
     render_401('Either you should be sign in or token is expired or wrong')
   end
 end
