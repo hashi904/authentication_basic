@@ -18,3 +18,8 @@ content-type: application/json
   "email":  "test9999@gmail.com",
   "password": "testtest"
 }
+
+### admin index
+GET http://localhost:3001/api/v1/admins
+X-Requested-With: XMLHttpRequest
+Authorization: Bearer 
