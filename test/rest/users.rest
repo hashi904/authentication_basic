@@ -22,4 +22,3 @@ content-type: application/json
 ### admin index
 GET http://localhost:3001/api/v1/admins
 X-Requested-With: XMLHttpRequest
-Authorization: Bearer 
