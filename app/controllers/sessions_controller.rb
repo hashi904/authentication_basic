@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :login_check, only: [:index]
   def index; end
 
   def new
