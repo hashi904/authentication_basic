@@ -4,6 +4,17 @@ X-Requested-With: XMLHttpRequest
 content-type: application/json
 
 {
-  "email":  "test@gmail.com",
-  "password_digest": "testtest"
+  "email":  "test9999@gmail.com",
+  "password": "testu9999"
+}
+
+### sign up request
+POST http://localhost:3001/api/v1/sign_up
+X-Requested-With: XMLHttpRequest
+content-type: application/json
+
+{
+  "nickname": "test9999",
+  "email":  "test9999@gmail.com",
+  "password": "testtest"
 }
