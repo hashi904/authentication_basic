@@ -15,8 +15,7 @@ class Api::V1::UsersController < Api::ApiApplicationController
       jwt = create_jwt(user_preload)
       render json: { status: 'sign up success', jwt: jwt, user: user_preload }
     else
-      # todo jsonにエラーメッセージを追加したい
-      render_401('sign up failed')
+      raise_sign_up_error
     end
   end
 
@@ -32,5 +31,15 @@ class Api::V1::UsersController < Api::ApiApplicationController
 
   def user_preload
     { email: @user.email, nickname: @user.nickname }
+  end
+
+  def raise_sign_up_error
+    messages = ''
+    if @user.errors.any?
+      @user.errors.full_messages.each do |message|
+        messages += ' ' + message + '.'
+      end
+    end
+    render_401('sign up failed' + messages)
   end
 end
