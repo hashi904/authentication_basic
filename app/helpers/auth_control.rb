@@ -19,4 +19,11 @@ module AuthControl
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def login_check
+    unless logged_in?
+      flash[:alert] = 'ログインしてください'
+      redirect_to root_path
+    end
+  end
 end
