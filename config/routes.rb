@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       post '/sign_in', to: 'users#sign_in'
       post '/sign_up', to: 'users#sign_up'
       resources :admins, only: %i[index]
+      get '/admins/call', to: 'admins#call'
     end
   end
 end
