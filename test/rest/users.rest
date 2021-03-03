@@ -22,3 +22,7 @@ content-type: application/json
 ### admin index
 GET http://localhost:3001/api/v1/admins
 X-Requested-With: XMLHttpRequest
+
+### admin send mail
+GET http://localhost:3001/api/v1/admins/call
+X-Requested-With: XMLHttpRequest
